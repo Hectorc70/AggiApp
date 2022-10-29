@@ -5,6 +5,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:provider/provider.dart';
 
 import 'marque_text.dart';
+
 class AnnouncementScreen extends StatelessWidget {
   final Announcement announcement;
   AnnouncementScreen({Key key, this.announcement}) : super(key: key);
@@ -20,21 +21,30 @@ class AnnouncementScreen extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: MarqueeWidget(direction: Axis.horizontal,
+              child: MarqueeWidget(
+                direction: Axis.horizontal,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: Dimensions.PADDING_SIZE_DEFAULT),
-                  child: Text(announcement.announcement, style: TextStyle(color: Color(int.parse(textColor)))),
+                  padding: const EdgeInsets.only(
+                      left: Dimensions.PADDING_SIZE_DEFAULT),
+                  child: Text(announcement.announcement,
+                      style: TextStyle(color: Color(int.parse(textColor)))),
                 ),
               ),
             ),
-            Container( width: 40,
+            Container(
+              width: 100,
               padding: EdgeInsets.all(10),
               child: Center(
                 child: InkWell(
-                    onTap: (){
-                      Provider.of<SplashProvider>(context,listen: false).changeAnnouncementOnOff(false);
+                    onTap: () {
+                      Provider.of<SplashProvider>(context, listen: false)
+                          .changeAnnouncementOnOff(false);
                     },
-                    child: Text('ok' ,style: TextStyle(color: Color(int.parse(textColor))))),
+                    child: Text('Aceptar',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Color(int.parse(textColor)),
+                        ))),
               ),
             ),
           ],
