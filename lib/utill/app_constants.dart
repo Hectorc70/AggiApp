@@ -156,6 +156,11 @@ class AppConstants {
   static const String TOPIC = 'sixvalley';
   static const String USER_ADDRESS = 'user_address';
 
+  //PAYMENT
+  static const String TOKEN_WOMPI = 'pub_test_rbHh9GcFhH28AUuNSWt9ztnKHZqUmu4r';
+  static const String TOKENIZAR_CARD_URI = 'https://sandbox.wompi.co/v1/tokens/cards';
+
+
   static List<LanguageModel> languages = [
     LanguageModel(
         imageUrl: '',

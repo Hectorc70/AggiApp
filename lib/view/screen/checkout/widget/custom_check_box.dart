@@ -7,25 +7,34 @@ import 'package:provider/provider.dart';
 class CustomCheckBox extends StatelessWidget {
   final String title;
   final int index;
-  CustomCheckBox({@required this.title, @required this.index});
+  final VoidCallback onTap;
+
+  CustomCheckBox(
+      {@required this.title, @required this.index, @required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<OrderProvider>(
       builder: (context, order, child) {
         return InkWell(
-          onTap: () => order.setPaymentMethod(index),
+          // onTap: onTap,
           child: Row(children: [
             Checkbox(
-              shape: CircleBorder(),
-              value: order.paymentMethodIndex == index,
-              activeColor: Theme.of(context).primaryColor,
-              onChanged: (bool isChecked) => order.setPaymentMethod(index),
-            ),
+                shape: CircleBorder(),
+                value: order.paymentMethodIndex == index,
+                activeColor: Theme.of(context).primaryColor,
+                onChanged: (bool isChecked) {
+                  order.setPaymentMethod(index);
+
+                  onTap();
+                }),
             Expanded(
-              child: Text(title, style: titilliumRegular.copyWith(
-                color: order.paymentMethodIndex == index ? Theme.of(context).textTheme.bodyText1.color : ColorResources.getGainsBoro(context),
-              )),
+              child: Text(title,
+                  style: titilliumRegular.copyWith(
+                    color: order.paymentMethodIndex == index
+                        ? Theme.of(context).textTheme.bodyText1.color
+                        : ColorResources.getGainsBoro(context),
+                  )),
             ),
           ]),
         );

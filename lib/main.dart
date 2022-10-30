@@ -28,6 +28,8 @@ import 'package:flutter_sixvalley_ecommerce/provider/search_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/seller_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/splash_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/support_ticket_provider.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/credit_card_provider.dart';
+
 import 'package:flutter_sixvalley_ecommerce/provider/theme_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/wishlist_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/theme/dark_theme.dart';
@@ -99,6 +101,8 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<FacebookLoginProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
+      ChangeNotifierProvider(create: (context) => di.sl<AddCreditCardProvider>()),
+
     ],
     child: MyApp(orderId: _orderID),
   ));
