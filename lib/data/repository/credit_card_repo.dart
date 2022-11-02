@@ -12,10 +12,14 @@ class CreditRepo {
 
   Future<ApiResponse> tokenizarCard(
       {@required CreditCardModelCustom model}) async {
-    try {                             
+    try {
+      dioClient.token = AppConstants.TOKEN_WOMPI;
+      // dioClient. = AppConstants.TOKENIZAR_CARD_URI;
+      dioClient.baseUrl = AppConstants.TOKENIZAR_CARD_URI;   
+
       final response = await dioClient
           .post(AppConstants.TOKENIZAR_CARD_URI, queryParameters: {
-        'Authorization': 'Bearer' + AppConstants.TOKEN_WOMPI
+        // 'Authorization': 'Bearer ' +
       }, data: {
         'number': model.cardNumber,
         'cvc': model.cvv,
@@ -23,6 +27,7 @@ class CreditRepo {
         'exp_year': model.expirationYear,
         'card_holder': model.holderName
       });
+      print(response);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));

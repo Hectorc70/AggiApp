@@ -36,12 +36,13 @@ class AddCreditCardProvider extends ChangeNotifier {
 
   Future<ApiResponse> payOrder() async {
     isLoader = true;
-    CreditCardModelCustom requestModel = _modelCard;
-    final response = await creditRepo.tokenizarCard(model: requestModel);
-    if (response.response.statusCode == 201) {
+    final response = await creditRepo.tokenizarCard(model: _modelCard);
+    if (response.response != null && response.response.statusCode == 201) {
       final data = jsonDecode(response.response.data);
       CreditCardModelCustom _model = CreditCardModelCustom.fromjson(data);
       cards = _model;
+      isLoader = false;
+      return null;
     }
     isLoader = false;
 

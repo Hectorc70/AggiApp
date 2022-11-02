@@ -16,8 +16,7 @@ class CreditCardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (_) => AddCreditCardProvider(), child: _Body());
+    return   _Body();
   }
 }
 
@@ -190,7 +189,7 @@ class _BodyState extends State<_Body> {
                   final rsponse = await Provider.of<AddCreditCardProvider>(context,
                           listen: false)
                       .payOrder();
-                }
+                } 
               },
               isBuy: false),
     );
