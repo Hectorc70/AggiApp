@@ -72,6 +72,8 @@ flutter:
     - assets/images/
     - assets/language/
     - assets/images/TEST/
+    - assets/images/pays/
+
 
 
   fonts:

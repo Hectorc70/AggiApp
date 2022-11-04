@@ -1,12 +1,13 @@
-import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sixvalley_ecommerce/data/model/response/base/api_response.dart';
+import 'package:flutter_sixvalley_ecommerce/data/model/request/new_transaction_request_model.dart';
+
 import 'package:flutter_sixvalley_ecommerce/data/model/response/credit_card_model.dart';
-import 'package:flutter_sixvalley_ecommerce/data/repository/credit_card_repo.dart';
+import 'package:flutter_sixvalley_ecommerce/data/repository/transaction_repo.dart';
 
 class AddCreditCardProvider extends ChangeNotifier {
-  final CreditRepo creditRepo;
+  final TransactionRepo creditRepo;
   CreditCardModelCustom _modelCard;
   List<CreditCardModelCustom> _cards = [];
 
@@ -34,18 +35,32 @@ class AddCreditCardProvider extends ChangeNotifier {
 
   CreditCardModelCustom get modelCard => _modelCard;
 
-  Future<ApiResponse> payOrder() async {
+  Future<Response> payOrder() async {
     isLoader = true;
     final response = await creditRepo.tokenizarCard(model: _modelCard);
-    if (response.response != null && response.response.statusCode == 201) {
-      final data = jsonDecode(response.response.data);
-      CreditCardModelCustom _model = CreditCardModelCustom.fromjson(data);
-      cards = _model;
-      isLoader = false;
-      return null;
-    }
     isLoader = false;
 
-    return response;
+    if (response.response.statusCode == 200) {
+      final data = response.response.data['data'];
+      isLoader = true;
+
+      CreditCardModelCustom _model = CreditCardModelCustom.fromjson(data);
+      cards = _model;
+      final responseCard = await creditRepo.newTransaccionCard(
+          model: NewTransactionPayRequestModel(
+              email: 'touch@gmail.com',
+              amount: 500000,
+              payMethod: {
+            'type': 'CARD',
+            'installments': 1,
+            'token': _model.id.toString()
+          }));
+
+      isLoader = false;
+
+      return responseCard.response;
+    }
+
+    return response.response;
   }
 }

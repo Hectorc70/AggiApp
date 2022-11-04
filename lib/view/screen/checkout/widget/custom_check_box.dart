@@ -8,9 +8,13 @@ class CustomCheckBox extends StatelessWidget {
   final String title;
   final int index;
   final VoidCallback onTap;
+  final String image;
 
   CustomCheckBox(
-      {@required this.title, @required this.index, @required this.onTap});
+      {@required this.title,
+      @required this.index,
+      @required this.image,
+      @required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,19 @@ class CustomCheckBox extends StatelessWidget {
         return InkWell(
           // onTap: onTap,
           child: Row(children: [
+            Image.asset(
+              image,
+              width: 40.0,
+              height: 20,
+            ),
+            Expanded(
+              child: Text(title,
+                  style: titilliumRegular.copyWith(
+                    color: order.paymentMethodIndex == index
+                        ? Theme.of(context).textTheme.bodyText1.color
+                        : ColorResources.getGainsBoro(context),
+                  )),
+            ),
             Checkbox(
                 shape: CircleBorder(),
                 value: order.paymentMethodIndex == index,
@@ -28,14 +45,6 @@ class CustomCheckBox extends StatelessWidget {
 
                   onTap();
                 }),
-            Expanded(
-              child: Text(title,
-                  style: titilliumRegular.copyWith(
-                    color: order.paymentMethodIndex == index
-                        ? Theme.of(context).textTheme.bodyText1.color
-                        : ColorResources.getGainsBoro(context),
-                  )),
-            ),
           ]),
         );
       },

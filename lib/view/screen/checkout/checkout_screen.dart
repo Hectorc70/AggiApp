@@ -68,7 +68,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   bool _billingAddress;
   bool loader = false;
   int status = 0;
- double couponDiscount =0.0;
+  double couponDiscount = 0.0;
   @override
   void initState() {
     super.initState();
@@ -836,7 +836,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           color: Theme.of(context).highlightColor,
                           child: Consumer<OrderProvider>(
                             builder: (context, order, child) {
-                            couponDiscount =
+                              couponDiscount =
                                   Provider.of<CouponProvider>(context)
                                               .discount !=
                                           null
@@ -910,6 +910,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                         Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                 // _cod && !widget.onlyDigital
                                 CustomCheckBox(
+                                    image: 'assets/images/pays/cash.png',
                                     onTap: () {},
                                     title: getTranslated(
                                         'cash_on_delivery', context),
@@ -917,6 +918,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                                 // _digitalPayment
                                 CustomCheckBox(
+                                    image:
+                                        'assets/images/pays/debit_credit.png',
                                     onTap: () {
                                       if (Provider.of<AddCreditCardProvider>(
                                                   context,
@@ -954,6 +957,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                             }))
                                     : const SizedBox(),
                                 CustomCheckBox(
+                                    image: 'assets/images/pays/nequi.png',
                                     onTap: () {
                                       setState(() {
                                         loader = true;
@@ -963,7 +967,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                           widget.discount -
                                           couponDiscount +
                                           widget.tax;
-                                      
+
                                       // TransactionRepo().newTransaccionNequi(model: NewTransactionPayRequestModel(
 
                                       // ))
@@ -976,6 +980,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                         getTranslated('label_nequi', context),
                                     index: 2),
                                 CustomCheckBox(
+                                    image: 'assets/images/pays/bancolombia.png',
                                     onTap: () {},
                                     title: getTranslated(
                                         'label_bancolombia', context),

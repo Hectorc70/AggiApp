@@ -16,7 +16,7 @@ class CreditCardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   _Body();
+    return _Body();
   }
 }
 
@@ -186,10 +186,17 @@ class _BodyState extends State<_Body> {
                       cvv: cvvCode);
                   Provider.of<AddCreditCardProvider>(context, listen: false)
                       .modelCard = model;
-                  final rsponse = await Provider.of<AddCreditCardProvider>(context,
+                  final rsponse = await Provider.of<AddCreditCardProvider>(
+                          context,
                           listen: false)
                       .payOrder();
-                } 
+                  if (rsponse.statusCode == 200) {
+                    Navigator.of(context).pop();
+
+                  }else{
+                    
+                  }
+                }
               },
               isBuy: false),
     );
