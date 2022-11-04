@@ -158,7 +158,15 @@ class AppConstants {
 
   //PAYMENT
   static const String TOKEN_WOMPI = 'pub_test_rbHh9GcFhH28AUuNSWt9ztnKHZqUmu4r';
-  static const String TOKENIZAR_CARD_URI = 'https://sandbox.wompi.co/v1/tokens/cards';
+  static const String TOKENIZAR_CARD_URI = 'api/v2/tokenize_card';
+  static const String TRANSACCTION_URI = 'api/v2/transactions/card';
+  static const String TRANSACCTION_BANCOLOMBIA = 'api/v2/transactions/bancolombia';
+  static const String TRANSACCTION_NEQUI = 'api/v2/transactions/nequi';
+
+
+  static const String TOKEN_ACCEPT_URI = 'https://sandbox.wompi.co/v1/merchants/pub_test_rbHh9GcFhH28AUuNSWt9ztnKHZqUmu4r';
+
+
 
 
   static List<LanguageModel> languages = [

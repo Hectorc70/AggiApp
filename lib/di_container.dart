@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/data/repository/cart_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/data/repository/category_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/data/repository/chat_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/data/repository/coupon_repo.dart';
-import 'package:flutter_sixvalley_ecommerce/data/repository/credit_card_repo.dart';
+import 'package:flutter_sixvalley_ecommerce/data/repository/transaction_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/data/repository/featured_deal_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/data/repository/flash_deal_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/data/repository/location_repo.dart';
@@ -100,7 +100,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SupportTicketRepo(dioClient: sl()));
   sl.registerLazySingleton(() => LocationRepo(dioClient: sl()));
   sl.registerLazySingleton(() => WalletTransactionRepo(dioClient: sl()));
-  sl.registerLazySingleton(() => CreditRepo(dioClient: sl()));
+  sl.registerLazySingleton(() => TransactionRepo(dioClient: sl()));
 
   // Provider
   sl.registerFactory(() => CategoryProvider(categoryRepo: sl()));
