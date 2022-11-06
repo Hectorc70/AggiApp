@@ -56,7 +56,7 @@ dependencies:
   fluttertoast: ^8.0.9
   permission_handler: ^10.0.0
   flutter_downloader: ^1.8.0+1
-
+  flutter_credit_card: ^3.0.4
 
 
 
@@ -71,6 +71,10 @@ flutter:
   assets:
     - assets/images/
     - assets/language/
+    - assets/images/TEST/
+    - assets/images/pays/
+
+
 
   fonts:
     - family: Ubuntu

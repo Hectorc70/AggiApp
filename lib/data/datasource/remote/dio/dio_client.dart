@@ -14,7 +14,8 @@ class DioClient {
   String token;
   String countryCode;
 
-  DioClient(this.baseUrl,
+  DioClient(
+      this.baseUrl,
       Dio dioC, {
         this.loggingInterceptor,
         this.sharedPreferences,

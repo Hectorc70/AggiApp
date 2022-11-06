@@ -189,19 +189,29 @@ class _MoreScreenState extends State<MoreScreen> {
                                 scrollDirection: Axis.horizontal,
                                 physics: BouncingScrollPhysics(),
                                 children: [
-                                  Provider.of<SplashProvider>(context,
-                                                  listen: false)
-                                              .configModel
-                                              .walletStatus ==
-                                          1
-                                      ? SquareButton(
-                                          image: Images.wallet,
-                                          title:
-                                              getTranslated('wallet', context),
-                                          navigateTo: WalletScreen(),
-                                          count: 1,
-                                          hasCount: false)
-                                      : SizedBox(),
+                                  // Provider.of<SplashProvider>(context,
+                                  //                 listen: false)
+                                  //             .configModel
+                                  //             .walletStatus ==
+                                  //         1
+                                  //     ? SquareButton(
+                                  //         image: Images.wallet,
+                                  //         title:
+                                  //             getTranslated('wallet', context),
+                                  //         navigateTo: WalletScreen(),
+                                  //         count: 1,
+                                  //         hasCount: false)
+                                  //     : SizedBox(),Provider.of<SplashProvider>(context,
+                                  //                 listen: false)
+                                  //             .configModel
+                                  //             .walletStatus ==
+                                  //         1
+                                  SquareButton(
+                                      image: Images.wallet,
+                                      title: getTranslated('wallet', context),
+                                      navigateTo: WalletScreen(),
+                                      count: 1,
+                                      hasCount: false),
                                   Provider.of<SplashProvider>(context,
                                                   listen: false)
                                               .configModel

@@ -376,5 +376,17 @@
   "enter_somethings": "Please input product name and then search",
   "download": "Download",
   "product_not_uploaded_yet": "Product not uploaded yet",
-  "product_image": "Product Image"
+  "product_image": "Product Image",
+  "add_credit_card": "Add Credit Card",
+  "number_card": "Number Card",
+  "date_exp": "Date Exp",
+  "holder_name": "Name",
+  "label_credit_card": "Credit/Debit Card",
+  "label_nequi": "Nequi",
+  "label_bancolombia": "Bancolombia.com",
+  "accept": "Accept"
+
+
+
+
 }

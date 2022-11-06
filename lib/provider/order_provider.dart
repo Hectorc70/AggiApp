@@ -32,6 +32,7 @@ class OrderProvider with ChangeNotifier {
   bool get isRefund => _isRefund;
   List<ShippingMethodModel> _shippingList;
   int _paymentMethodIndex = 0;
+  
   bool _onlyDigital = true;
   bool get onlyDigital => _onlyDigital;
 
