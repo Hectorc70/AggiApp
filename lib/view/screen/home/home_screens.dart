@@ -138,7 +138,13 @@ class _HomePageState extends State<HomePage> {
                     centerTitle: false,
                     automaticallyImplyLeading: false,
                     backgroundColor: Theme.of(context).highlightColor,
-                    title: Image.asset(Images.logo_with_name_image, height: 35),
+                    title: Container(
+                        padding: EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                            color: Color(0xff3C007D),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Image.asset(Images.logo_with_name_image,
+                            height: 35)),
                     actions: [
                       Padding(
                         padding: const EdgeInsets.only(right: 12.0),
@@ -254,17 +260,18 @@ class _HomePageState extends State<HomePage> {
 
                           // Category
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal:
-                                    Dimensions.PADDING_SIZE_EXTRA_EXTRA_SMALL,
-                                vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                            child: TitleRow(
-                                title: getTranslated('CATEGORY', context),
-                                onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => AllCategoryScreen()))),
-                          ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal:
+                                      Dimensions.PADDING_SIZE_EXTRA_EXTRA_SMALL,
+                                  vertical:
+                                      Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Categorías",
+                                  style: titleHeader,
+                                ),
+                              )),
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
                           Padding(
                             padding: const EdgeInsets.only(
@@ -688,29 +695,29 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              // Provider.of<SplashProvider>(context, listen: false)
-              //             .configModel
-              //             .announcement
-              //             .status ==
-              //         '1'
-              //     ? Positioned(
-              //         top: MediaQuery.of(context).size.height - 128,
-              //         left: 0,
-              //         right: 0,
-              //         child: Consumer<SplashProvider>(
-              //           builder: (context, announcement, _) {
-              //             return (announcement.configModel.announcement
-              //                             .announcement !=
-              //                         null &&
-              //                     announcement.onOff)
-              //                 ? AnnouncementScreen(
-              //                     announcement:
-              //                         announcement.configModel.announcement)
-              //                 : SizedBox();
-              //           },
-              //         ),
-              //       )
-              //     : SizedBox(),
+              Provider.of<SplashProvider>(context, listen: false)
+                          .configModel
+                          .announcement
+                          .status ==
+                      '1'
+                  ? Positioned(
+                      top: MediaQuery.of(context).size.height - 128,
+                      left: 0,
+                      right: 0,
+                      child: Consumer<SplashProvider>(
+                        builder: (context, announcement, _) {
+                          return (announcement.configModel.announcement
+                                          .announcement !=
+                                      null &&
+                                  announcement.onOff)
+                              ? AnnouncementScreen(
+                                  announcement:
+                                      announcement.configModel.announcement)
+                              : SizedBox();
+                        },
+                      ),
+                    )
+                  : SizedBox(),
             ],
           ),
         ),
